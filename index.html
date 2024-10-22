@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Infantil</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        /* Estilo del contenedor de bienvenida */
+        #bienvenido {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-image: url("./imagenes/robots.jpg"); /* Aquí puedes poner el fondo de robots */
+            background-size: 100%;
+            background-position: center;
+        }
+
+        /* Imágenes laterales que se desplazan */
+        .imagen-lateral {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            transition: transform 1.5s ease;
+            z-index: 2;
+        }
+
+        #imagen-izquierda {
+            left: 0;
+            background-image: url(./imagenes/derecha.jpg);
+            background-size: 100%;
+            background-position: center;
+        }
+
+        #imagen-derecha {
+            right: 0;
+            background-image: url(./imagenes/izquierda.jpg);
+            background-size: 100%;
+            background-position: center;
+        }
+
+        /* Mensaje de Bienvenido que se revela */
+        #mensaje-bienvenido {
+            position: absolute;
+            font-size: 4rem;
+            color: yellow;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(241,231,230,0.5  ); /* Fondo semitransparente detrás del texto */
+            border-radius: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 1;
+        }
+
+        /* Cuando se haga scroll, el efecto se activa */
+        .activar .imagen-lateral#imagen-izquierda {
+            transform: translateX(-100%);
+        }
+
+        .activar .imagen-lateral#imagen-derecha {
+            transform: translateX(100%);
+        }
+
+        .activar #mensaje-bienvenido {
+            opacity: 1;
+        }
+
+        /* Estilos para el contador */
+        #contador {
+            font-size: 2rem;
+             color: #000000;
+            font-weight: bold;
+            /*/background-color: #007bff;/*/
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            background-image: url(./imagenes/globoss.png); /* Globos de fondo */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        /* Estilo de la página mientras se hace scroll */
+        body {
+            height: 200vh; /* Para permitir el desplazamiento */
+        }
+    </style>
+</head>
+<body>
+    <!-- Sección de Bienvenida -->
+    <section id="bienvenido">
+        <div id="imagen-izquierda" class="imagen-lateral"></div>
+        <div id="imagen-derecha" class="imagen-lateral"></div>
+        <div id="mensaje-bienvenido">¡Te invito a mi fiesta!</div>
+    </section>
+
+    <!-- Sección de la invitación -->
+    <section class="container text-center my-5">
+        <h2>¡Hola, me encantaria que me acompañaras este dia tan especial!</h2>
+        <p>La fiesta será el <strong>31 de octubre de 2024</strong> a las <strong>18:00</strong>. ¡No faltes!</p>
+        <div id="contador"></div>
+    </section>
+
+  <!-- Galería -->
+<section class="container galeria my-5">
+    <h3 class="text-center">¡Mira algunas fotos mias!</h3>
+    <div class="row">
+        <div class="col-md-6 col-12 d-flex justify-content-start">
+            <img src="./imagenes/1.jpg" alt="foto1" class="img-fluid">
+        </div>
+        <div class="col-md-6 col-12 d-flex justify-content-end">
+            <img src="./imagenes/2.jpg" alt="foto2" class="img-fluid">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6 col-12 d-flex justify-content-start">
+            <img src="./imagenes/1.jpg" alt="foto3" class="img-fluid">
+        </div>
+        <div class="col-md-6 col-12 d-flex justify-content-end">
+            <img src="./imagenes/2.jpg" alt="foto4" class="img-fluid">
+        </div>
+    </div>
+</section>
+
+    <!-- Sección de ubicación -->
+    <section class="container my-5">
+        <h3 class="text-center">Ubicación de la fiesta</h3>
+        <div class="map-responsive">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.413026261477!2d144.96305591531423!3d-37.81410797975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5774c2c4e2e9123!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1600303372376!5m2!1sen!2sau"
+                width="100%" height="400" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Sección de agradecimiento -->
+    <section id="agradecimiento" class="text-center py-5 bg-warning">
+        <h4>¡Gracias por confirmar tu asistencia!</h4>
+        <p>¡Nos vemos en la fiesta!</p>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script para el contador -->
+    <script>
+        // Contador
+        var fechaEvento = new Date("Oct 31, 2024 18:00:00").getTime();
+        var x = setInterval(function() {
+            var ahora = new Date().getTime();
+            var diferencia = fechaEvento - ahora;
+
+            var dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            var horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            var segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById("contador").innerHTML = dias + "d " + horas + "h " + minutos + "m " + segundos + "s ";
+
+            if (diferencia < 0) {
+                clearInterval(x);
+                document.getElementById("contador").innerHTML = "¡El evento ha comenzado!";
+            }
+        }, 1000);
+
+        // Efecto de las imágenes al hacer scroll
+        window.addEventListener('scroll', function() {
+            const bienvenidoSection = document.getElementById('bienvenido');
+            const windowScroll = window.scrollY;
+            if (windowScroll > 50) { // Ajusta según lo necesario
+                bienvenidoSection.classList.add('activar');
+            } else {
+                bienvenidoSection.classList.remove('activar');
+            }
+        });
+    </script>
+</body>
+</html>
